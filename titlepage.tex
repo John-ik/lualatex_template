@@ -1,0 +1,133 @@
+\documentclass[
+    oneside, % no mirrored margin for twosided book
+    % draft, % no figure, no listings, draw Bold where box overflow (debug)
+    12pt % fontsize
+    ]{extarticle}
+
+\usepackage{luacode}
+\usepackage[russian]{babel}
+
+\usepackage{fontspec}
+\setmainfont{CMU Serif} % You can change this to your desired font
+\setmonofont{JetBrains Mono}
+
+\usepackage{amsmath} % math
+\usepackage{amssymb}
+
+\usepackage{listings} % for code listings
+\usepackage{xcolor} % color highlight
+\usepackage{textcomp} %? for copy code
+
+\usepackage{graphicx}
+
+\usepackage{indentfirst} % красная строка
+
+\usepackage{vmargin} % page size and margin
+\setpapersize{A4}
+\setmarginsrb{2cm}{1.5cm}{1cm}{1.5cm}{0pt}{0mm}{0pt}{13mm}
+
+
+\newcommand{\underoverline}[3][5cm]{
+    \begin{minipage}{#1}
+        \centering \vspace{1em}
+        #2 \\
+        \vspace{-0.9em}
+        \rule{\textwidth}{0.5pt} \\
+        \vspace{-0.3em}
+        \footnotesize #3
+    \end{minipage}
+}
+
+
+\begin{luacode}
+function split (str)
+    local result = {}
+    for item in string.gmatch(str, '([^,]+)') do
+        table.insert(result, item)
+    end
+    return result
+end
+
+function len (t)
+    return #t
+end
+
+local template = ""..
+"&" ..
+"\\underoverline[4cm]{\\vphantom{\\theauthor}}{\\phantom{P}} &" ..
+"\\underoverline[6cm]{%s}{\\phantom{P}} \\\\"
+
+function print_sign_name(authors)
+    for i, author in ipairs(split(authors)) do
+        tex.sprint(string.format(i > 1 and "&" .. template or template, author))
+    end
+end
+\end{luacode}
+
+\newcommand{\ifmany}[3]{
+    \directlua{
+        if len(split("#1")) > 1 then
+            tex.sprint("#2")
+        else
+            tex.sprint("#3")
+        end
+    }
+}
+
+% Params
+% #1 - Номер кафедры
+% #2 - Должность, уч степень, звание преподавателя 
+% #3 - ФИО преподавателя
+% #4 - Тип работы и номер (Лабораторная работа №1)
+% #5 - Название работы
+% #6 - название курса
+% #7 - ФИО студента(ов) (через запятую)
+\newcommand{\titleguap}[7]{
+    \begin{titlepage}
+        \centerline{ГУАП}
+        \vfill
+        \centerline{Кафедра №#1}
+        \vfill
+        \leftline{ОТЧЕТ}
+        \leftline{ЗАЩИЩЕН С ОЦЕНКОЙ}
+        \vspace{0.7em}
+        \leftline{ПРЕПОДАВАТЕЛЬ}
+        \vspace{1em}
+        
+        
+        \underoverline[6cm]{#2\vphantom{#3}}{должность, уч. степень, звание}
+        \underoverline[4cm]{\vphantom{#3}}{подпись, дата}
+        \underoverline[6cm]{#3}{фамилия, инициалы}
+        
+        \vfill
+        \centerline{\large \uppercase{#4}}
+        \vfill
+        \centerline{\large \uppercase{#5}}
+        \vfill
+        \centerline{по курсу:}
+        \vspace{1em}
+        \centerline{\large \uppercase{#6}}
+        \vfill
+        \vfill
+        \begin{tabular}{lccc}
+            \multicolumn{2}{l}{РАБОТУ \ifmany{#7}{ВЫПОЛНИЛи}{ВЫПОЛНИЛ}} & & \\
+            
+            \ifmany{#7}{СТУДЕНТы}{СТУДЕНТ} гр № &
+            \underoverline[1.1cm]{\thegroup\vphantom{\theauthor}}{\phantom{P}}
+            \directlua{print_sign_name("#7")}
+            % &
+            % &
+            % \underline{\hspace{4cm}} &
+            % \underline{\hspace{1.5cm}\theauthor\hspace{1.5cm}} \\
+            
+            &
+            &
+            {\footnotesize подпись, дата} &
+            {\footnotesize фамилия, инициалы}
+        \end{tabular}
+        
+        \vfill
+        \centerline{Санкт-Петербург \the\year}
+    \end{titlepage}
+    \addtocounter{page}{1} % increment page number
+}

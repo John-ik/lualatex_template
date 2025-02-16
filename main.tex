@@ -1,0 +1,87 @@
+\input{titlepage.tex} 
+
+\newcommand{\theauthor}{Фамилия И.О.}
+\newcommand{\thegroup}{группа}
+
+
+\begin{document}
+
+\graphicspath{{img/}}
+
+\lstset{
+    basicstyle=\ttfamily, % Use typewriter font
+    keywordstyle=\color{blue}, % Keywords in blue
+    commentstyle=\color{green}, % Comments in green
+    stringstyle=\color{red}, % Strings in red
+    numbers=left, % Line numbers on the left
+    numberstyle=\tiny\color{gray}, % Style for line numbers
+    stepnumber=1, % Line numbers step
+    numbersep=5pt, % Distance of line numbers from the code
+    backgroundcolor=\color{white}, % Background color
+    frame=single, % Frame around the code
+    tabsize=4, % Tab size
+    captionpos=t, % Caption position (b for bottom, t for top)
+    showstringspaces=false, % no symbol for space
+    upquote=true
+}
+% -------------------- BEGIN DOCUMENT --------------------
+
+\titleguap{кафедра}{преподаватель}{Фамилия ИО}{Лабораторная работа №1}{Линейные алгоритмы}{предмет}{\theauthor}
+% May be more then one author                                                                       \theauthor,Второй Иван,Третий Иван
+
+
+\section{Задание 1.7.}
+
+Из круга радиуса $R$ вырезали квадрат со стороной $a$. Какова площадь оставшейся фигуры?
+
+
+\section{Формализация.}
+
+Формулы площади фигур: $ S_{\text{круг}} = \pi R^2 $ и $ S_{\text{кв}} = a^2 $.
+
+Площадь фигуры, полученная вычитанием из круга квадрата: $ s = S_{\text{круг}} - S_{\text{кв}} = \pi R^2 - a^2  $.
+
+Для программного решения задачи, объявим переменные \texttt{r}, \texttt{a}, \texttt{s} с типом \texttt{float},
+затем сделаем ввод $R$ и $a$, используя функцию \texttt{scanf}, 
+для красивого оформления, предварительно выведем имена переменных с помощью \texttt{printf}.
+
+Далее по формуле подсчитаем ответ и запишем в перменную \texttt{s}.
+
+В конце выведем ответ, используя \texttt{printf}.
+
+\section{Блок-схема.}
+
+\begin{figure}[h] % 'h' means place the figure here
+    \centering % Center the image
+    \includegraphics[height=15cm]{scheme} 
+    \caption{Блок-схема.} % Caption for the image
+    \label{fig:scheme} % Label for referencing the image
+\end{figure}
+
+
+\section{Программа.}
+
+\lstinputlisting[language=C, label=src_main]{../main.c}
+
+
+\section{Тестирование.}
+
+\begin{tabular}{|l|cc|c|c|}
+    \hline
+    № & Ввод R & Ввод a & Расчет & Вывод программы \\
+    \hline
+    1 & 1   & 1   &$ \pi \cdot 1^2 - 1^2 = \pi - 1 \approx 2.14159265 $& 2.141593     \\
+    2 & 10  & 2   &$ \pi \cdot 10^2 - 2^2 \approx 310.159265          $& 310.159271  \\
+    3 & 5   & 6   &$ \pi \cdot 5^2 - 6^2 \approx 42.539816            $& 42.539818   \\
+    4 & 8   & 10  &$ \pi \cdot 8^2 - 10^2 \approx 101.061929          $& 101.061928  \\
+    5 & 150 & 200 &$ \pi \cdot 150^2 - 200^2 \approx 30685.83471      $& 30685.833984\\
+    \hline
+\end{tabular}
+
+\section{Вывод.}
+
+В первой лабораторной работе нужно было составить программу чтобы выполнить геометрический расчет. 
+Блок схема составлена. Данные сошлись. Работа корректна.
+
+
+\end{document}
