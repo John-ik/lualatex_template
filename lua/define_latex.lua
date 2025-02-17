@@ -2,7 +2,7 @@
 
 function define_latex_command(function_name, lua_function)
     local arg_count = debug.getinfo(lua_function, "u").nparams
-    _G[function_name] = lua_function
+    -- _G[function_name] = lua_function
     local i = 1000;
     local t=lua.get_functions_table()
     while true do
@@ -31,7 +31,7 @@ function define_latex_command(function_name, lua_function)
         table.concat(argRef,"}{") .. "}}"
     tex.print(stri.."")
     
-    -- print("v___", stri)
+    print("v___", stri)
     return lua_function
 end
 

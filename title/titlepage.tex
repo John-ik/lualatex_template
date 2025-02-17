@@ -1,4 +1,10 @@
 \input{guap-setup/guap-setup.tex} 
+
+
+\newcommand{\thegroup}{1445}
+\newcommand{\workyear}{\the\year}
+
+
 \usepackage{amsmath} % math
 \usepackage{amssymb}
 
@@ -16,6 +22,7 @@
 \directlua{
     dofile("lua/define_latex.lua")
     dofile("lua/util.lua")
+    dofile("title/lua/params.lua")
 }
 
 \newcommand{\underoverline}[3][5cm]{
@@ -37,11 +44,11 @@
 % #5 - Название работы
 % #6 - название курса
 % #7 - ФИО студента(ов) (через запятую)
-\newcommand{\titleguap}[7]{
+\newcommand{\maketitleguap}{
     \begin{titlepage}
         \centerline{ГУАП}
         \vfill
-        \centerline{Кафедра №#1}
+        \centerline{Кафедра №\getDepartmentNum}
         \vfill
         \leftline{ОТЧЕТ}
         \leftline{ЗАЩИЩЕН С ОЦЕНКОЙ}
@@ -50,26 +57,26 @@
         \vspace{1em}
         
         
-        \underoverline[6cm]{#2\vphantom{#3}}{должность, уч. степень, звание}
-        \underoverline[4cm]{\vphantom{#3}}{подпись, дата}
-        \underoverline[6cm]{#3}{фамилия, инициалы}
+        \underoverline[6cm]{\getTeacherDegree\vphantom{AА}}{должность, уч. степень, звание}
+        \underoverline[4cm]{\vphantom{AА}}{подпись, дата}
+        \underoverline[6cm]{\getTeacherName}{фамилия, инициалы}
         
         \vfill
-        \centerline{\large \uppercase{#4}}
+        \centerline{\large \uppercase{\getWorkType}}
         \vfill
-        \centerline{\large \uppercase{#5}}
+        \centerline{\large \uppercase{\getWorkName}}
         \vfill
         \centerline{по курсу:}
         \vspace{1em}
-        \centerline{\large \uppercase{#6}}
+        \centerline{\large \uppercase{\getCourseName}}
         \vfill
         \vfill
         \begin{tabular}{lccc}
-            \multicolumn{2}{l}{РАБОТУ \ifmany{#7}{ВЫПОЛНИЛи}{ВЫПОЛНИЛ}} & & \\
+            \multicolumn{2}{l}{РАБОТУ \ifmany{\getWorkAuthor}{ВЫПОЛНИЛи}{ВЫПОЛНИЛ}} & & \\
             
-            \ifmany{#7}{СТУДЕНТы}{СТУДЕНТ} гр № &
-            \underoverline[1.1cm]{\thegroup\vphantom{\theauthor}}{\phantom{P}}
-            \printSignName{#7}
+            \ifmany{\getWorkAuthor}{СТУДЕНТы}{СТУДЕНТ} гр № &
+            \underoverline[1.1cm]{\getWorkAuthorGroup\vphantom{1234}}{\phantom{1234}}
+            \printSignName{\getWorkAuthor}
             % &
             % &
             % \underline{\hspace{4cm}} &
@@ -82,7 +89,7 @@
         \end{tabular}
         
         \vfill
-        \centerline{Санкт-Петербург \the\year}
+        \centerline{Санкт-Петербург \workyear}
     \end{titlepage}
     \addtocounter{page}{1} % increment page number
 }
