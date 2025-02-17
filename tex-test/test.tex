@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{luacode}
+\usepackage[russian]{babel}
+
+\usepackage{fontspec} % для XeLaTeX и LuaLaTeX
+\setmainfont{CMU Serif} % пример шрифта с кириллицей
+
+\directlua{
+    dofile("lua/define_latex.lua")
+}
+
+
+\directlua{
+    dofile("lua/util.lua")
+}
+% \newcommand{\ifmany}[3]{\luabytecodecall1{#1}{#2}{#3}}
+%	\newcommand{\functest}[1]{\luabytecodecall2{#1}}
+
+% \newcommand{\ifdmany}[3]{\luabytecodecall1{#1}{#2}{#3}}
+% \newcommand{\ifmanyB}[3]{\luabytecodecall1{#1}{#2}{#3}}
+% \newcommand{\ifmany}[3]{\luafunction1000{#1}{#2}{#3}}
+% \directlua{
+%   tex.sprint("\\newcommand{\ifmany}[1]{\directlua{ifmany(#1)}}")
+% }
+% \newcommand{\ifmany}[3]{\luabytecodecall1000{#1}{#2}{#3}}
+% \directlua{
+%     print(table.unpack(define_my_command_meta_data))
+%     print("test.."..tostring(lua.bytecode[1000]))
+%     local i=1000
+%     print("test2.."..tostring(lua.bytecode[i]))
+%      prev1000=lua.bytecode[i]
+%     % lua.bytecode[i]=prev1000
+% }
+\begin{document}    
+Hello\\
+Hello1\\
+Hello\\
+Hello13\\
+% Hello\\
+\ifmany{1}{два}{девятЬ}
+% \luabytecodecall1000{3}{1}{4}
+% \luabytecodecall1{3}{1}{5}
+% \insertitit
+% \ifmany{123}
+\end{document}

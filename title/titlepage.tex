@@ -1,16 +1,4 @@
-\documentclass[
-    oneside, % no mirrored margin for twosided book
-    % draft, % no figure, no listings, draw Bold where box overflow (debug)
-    12pt % fontsize
-    ]{extarticle}
-
-\usepackage{luacode}
-\usepackage[russian]{babel}
-
-\usepackage{fontspec}
-\setmainfont{CMU Serif} % You can change this to your desired font
-\setmonofont{JetBrains Mono}
-
+\input{guap-setup/guap-setup.tex} 
 \usepackage{amsmath} % math
 \usepackage{amssymb}
 
@@ -25,7 +13,10 @@
 \usepackage{vmargin} % page size and margin
 \setpapersize{A4}
 \setmarginsrb{2cm}{1.5cm}{1cm}{1.5cm}{0pt}{0mm}{0pt}{13mm}
-
+\directlua{
+    dofile("lua/define_latex.lua")
+    dofile("lua/util.lua")
+}
 
 \newcommand{\underoverline}[3][5cm]{
     \begin{minipage}{#1}
@@ -36,42 +27,6 @@
         \vspace{-0.3em}
         \footnotesize #3
     \end{minipage}
-}
-
-
-\begin{luacode}
-function split (str)
-    local result = {}
-    for item in string.gmatch(str, '([^,]+)') do
-        table.insert(result, item)
-    end
-    return result
-end
-
-function len (t)
-    return #t
-end
-
-local template = ""..
-"&" ..
-"\\underoverline[4cm]{\\vphantom{\\theauthor}}{\\phantom{P}} &" ..
-"\\underoverline[6cm]{%s}{\\phantom{P}} \\\\"
-
-function print_sign_name(authors)
-    for i, author in ipairs(split(authors)) do
-        tex.sprint(string.format(i > 1 and "&" .. template or template, author))
-    end
-end
-\end{luacode}
-
-\newcommand{\ifmany}[3]{
-    \directlua{
-        if len(split("#1")) > 1 then
-            tex.sprint("#2")
-        else
-            tex.sprint("#3")
-        end
-    }
 }
 
 % Params
@@ -114,7 +69,7 @@ end
             
             \ifmany{#7}{СТУДЕНТы}{СТУДЕНТ} гр № &
             \underoverline[1.1cm]{\thegroup\vphantom{\theauthor}}{\phantom{P}}
-            \directlua{print_sign_name("#7")}
+            \printSignName{#7}
             % &
             % &
             % \underline{\hspace{4cm}} &

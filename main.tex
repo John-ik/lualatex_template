@@ -1,10 +1,12 @@
-\input{titlepage.tex} 
-
+\input{title/titlepage.tex} 
+% !TEX root = main.tex
+\usepackage[russian]{babel}
 \newcommand{\theauthor}{Фамилия И.О.}
 \newcommand{\thegroup}{группа}
 
 
 \begin{document}
+
 
 \graphicspath{{img/}}
 
@@ -61,7 +63,7 @@
 
 \section{Программа.}
 
-\lstinputlisting[language=C, label=src_main]{../main.c}
+% \lstinputlisting[language=C, label=src_main]{../main.c}
 
 
 \section{Тестирование.}

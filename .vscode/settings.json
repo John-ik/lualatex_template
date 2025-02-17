@@ -1,0 +1,5 @@
+{
+    "Lua.diagnostics.globals": [
+        "define_my_command_meta_data"
+    ]
+}
