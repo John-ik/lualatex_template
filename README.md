@@ -1,4 +1,5 @@
-# VS Code settings.json
+# Setup
+## VS Code settings.json
 
 "-shell-escape" in arg lualatexmk tools:
 
@@ -18,3 +19,9 @@
 ```
 
 `"latex-workshop.latex.outDir": "output/",` to hide output files
+
+## Fonts
+
+CMU Serif - Computer Modern UTF - usually packs with TexLive
+
+JetBrains Mono - [website](https://www.jetbrains.com/lp/mono/) - support ru

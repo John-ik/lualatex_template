@@ -4,14 +4,19 @@
 
 \usepackage{fontspec}
 \setmainfont{CMU Serif} % You can change this to your desired font
-% \setmonofont{JetBrains Mono}
+\setmonofont{JetBrains Mono}
 
 \usepackage{amsmath} % math
 \usepackage{amssymb}
 
-\usepackage{listings} % for code listings
-\usepackage{xcolor} % color highlight
-\usepackage{textcomp} %? for copy code
+\usepackage[
+    cachedir=output/_minted
+]{minted}
+\setminted{
+    linenos, % line numbering
+    breaklines, % wrap line if not fit
+    frame=single % line box around
+}
 
 \usepackage{graphicx}
 
