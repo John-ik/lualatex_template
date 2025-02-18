@@ -1,11 +1,27 @@
-\documentclass[
-    oneside, % no mirrored margin for twosided book
-    % draft, % no figure, no listings, draw Bold where box overflow (debug)
-    12pt % fontsize
-]{extarticle}
+% !TeX root = ../main.tex
 \usepackage[russian]{babel}
 \usepackage{luacode}
 
 \usepackage{fontspec}
 \setmainfont{CMU Serif} % You can change this to your desired font
 % \setmonofont{JetBrains Mono}
+
+\usepackage{amsmath} % math
+\usepackage{amssymb}
+
+\usepackage{listings} % for code listings
+\usepackage{xcolor} % color highlight
+\usepackage{textcomp} %? for copy code
+
+\usepackage{graphicx}
+
+\usepackage{indentfirst} % красная строка
+
+\usepackage{vmargin} % page size and margin
+\setpapersize{A4}
+\setmarginsrb{2cm}{1.5cm}{1cm}{1.5cm}{0pt}{0mm}{0pt}{13mm}
+\directlua{
+    dofile("lua/define_latex.lua")
+    dofile("lua/util.lua")
+    dofile("title/lua/params.lua")
+}

@@ -15,7 +15,7 @@ define_latex_command("ifmany", function(a, b, c)
 end)
 
 local template = "&"..
-"\\underoverline[4cm]{\\vphantom{\\theauthor}}{\\phantom{P}} &"..
+"\\underoverline[4cm]{\\vphantom{\\getWorkAuthor}}{\\phantom{P}} &"..
 "\\underoverline[6cm]{%s}{\\phantom{P}} \\\\"
 
 define_latex_command("printSignName", function(authors)

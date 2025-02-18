@@ -1,7 +1,10 @@
-\input{title/titlepage.tex} 
-% !TEX root = main.tex
-\usepackage[russian]{babel}
-\newcommand{\theauthor}{Фамилия И.О.}
+\documentclass[
+    oneside, % no mirrored margin for twosided book
+    % draft, % no figure, no listings, draw Bold where box overflow (debug)
+    12pt % fontsize
+]{extarticle}
+
+\input{title/titlepage.tex}
 
 
 \begin{document}
@@ -38,8 +41,6 @@
 \workAuthor{Boss of the gym, Slave}
 
 \maketitleguap
-%{кафедра}{преподаватель}{Фамилия ИО}{Лабораторная работа №1}{Линейные алгоритмы}{предмет}{\theauthor}
-% May be more then one author                                                                       \theauthor,Второй Иван,Третий Иван
 
 
 \section{Задание 1.7.}
@@ -72,8 +73,6 @@
 
 
 \section{Программа.}
-
-% \lstinputlisting[language=C, label=src_main]{../main.c}
 
 
 \section{Тестирование.}

@@ -4,27 +4,6 @@
 \newcommand{\thegroup}{1445}
 \newcommand{\workyear}{\the\year}
 
-
-\usepackage{amsmath} % math
-\usepackage{amssymb}
-
-\usepackage{listings} % for code listings
-\usepackage{xcolor} % color highlight
-\usepackage{textcomp} %? for copy code
-
-\usepackage{graphicx}
-
-\usepackage{indentfirst} % красная строка
-
-\usepackage{vmargin} % page size and margin
-\setpapersize{A4}
-\setmarginsrb{2cm}{1.5cm}{1cm}{1.5cm}{0pt}{0mm}{0pt}{13mm}
-\directlua{
-    dofile("lua/define_latex.lua")
-    dofile("lua/util.lua")
-    dofile("title/lua/params.lua")
-}
-
 \newcommand{\underoverline}[3][5cm]{
     \begin{minipage}{#1}
         \centering \vspace{1em}
@@ -80,7 +59,7 @@
             % &
             % &
             % \underline{\hspace{4cm}} &
-            % \underline{\hspace{1.5cm}\theauthor\hspace{1.5cm}} \\
+            % \underline{\hspace{1.5cm}\getWorkAuthor\hspace{1.5cm}} \\
             
             &
             &
