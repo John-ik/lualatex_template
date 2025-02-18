@@ -1,6 +1,9 @@
 % !TeX root = ../main.tex
 \input{guap-setup/guap-setup.tex} 
 
+\directlua{
+    dofile("title/lua/title.lua")
+}
 
 \newcommand{\thegroup}{1445}
 \newcommand{\workyear}{\the\year}

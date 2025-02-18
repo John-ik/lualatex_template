@@ -1,5 +1,4 @@
 
-
 titlePageInfo={
     departmentNum="unset",
     teacherDegree="unset",
@@ -25,3 +24,14 @@ for k,v in pairs(titlePageInfo) do
 end
 
 
+
+local template = "&"..
+"\\underoverline[4cm]{\\vphantom{\\getWorkAuthor}}{\\phantom{P}} &"..
+"\\underoverline[6cm]{%s}{\\phantom{P}} \\\\"
+
+define_latex_command("printSignName", function(authors)
+    
+    for i, author in ipairs(split(authors, ',')) do
+        tex.sprint(string.format(i > 1 and "&" .. template or template, author))
+    end
+end)
