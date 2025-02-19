@@ -1,9 +1,11 @@
 # Setup
 ## VS Code settings.json
 
+Full [file](.vscode/settings.json)
+
 "-shell-escape" in arg lualatexmk tools:
 
-```
+```json
 {
 "name": "lualatexmk",
 "command": "latexmk",
@@ -16,8 +18,8 @@
     "%DOC%",
     "-shell-escape"
 ],
-},
 "env": {}
+},
 ```
 
 `"latex-workshop.latex.outDir": "output/",` to hide output files
