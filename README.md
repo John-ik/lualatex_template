@@ -4,6 +4,7 @@
 "-shell-escape" in arg lualatexmk tools:
 
 ```
+{
 "name": "lualatexmk",
 "command": "latexmk",
 "args": [
@@ -15,6 +16,7 @@
     "%DOC%",
     "-shell-escape"
 ],
+},
 "env": {}
 ```
 
@@ -25,3 +27,7 @@
 CMU Serif - Computer Modern UTF - usually packs with TexLive
 
 JetBrains Mono - [website](https://www.jetbrains.com/lp/mono/) - support ru
+
+## EXternal Dependency
+
+`python-pygments` for **minted**
