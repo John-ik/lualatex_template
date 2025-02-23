@@ -22,6 +22,7 @@ Full [file](.vscode/settings.json)
 },
 ```
 
+
 `"latex-workshop.latex.outDir": "output/",` to hide output files
 
 ## Fonts
@@ -33,3 +34,5 @@ JetBrains Mono - [website](https://www.jetbrains.com/lp/mono/) - support ru
 ## EXternal Dependency
 
 `python-pygments` for **minted**
+
+## Hehe title
