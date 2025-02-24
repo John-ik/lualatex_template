@@ -34,5 +34,3 @@ JetBrains Mono - [website](https://www.jetbrains.com/lp/mono/) - support ru
 ## EXternal Dependency
 
 `python-pygments` for **minted**
-
-## Hehe title
