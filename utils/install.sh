@@ -5,10 +5,8 @@
 if which apt &>/dev/null; then
 	echo 'APT detected'
 	sudo apt-get update
-	sudo apt-get install python3-pygments texlive-full
-fi
-
-if which pacman &>/dev/null; then
+	sudo apt-get install python3-pygments latexmk texlive-full
+elif which pacman &>/dev/null; then
 	echo 'PACMAN detected'
 	sudo pacman -Sy
 	sudo pacman -S \
