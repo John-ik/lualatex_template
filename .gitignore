@@ -6,3 +6,4 @@
 **/gitignore/**
 output/
 limg/**
+main*.tex
