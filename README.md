@@ -7,30 +7,18 @@ Run [install script](utils/install.sh) now for APT and Pacman. Sudo will be requ
 Installing guide:
 https://www.tug.org/texlive/windows.html
 
+## VS Code extension
+
+Full list in [file](.vscode/extensions.json)
+
+1. [james-yu.latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) necessary for work.
+
+2. Cpell-checker for grammar check.
 
 # Setup
 ## VS Code settings.json
 
 Full [file](.vscode/settings.json)
-
-"-shell-escape" in arg lualatexmk tools:
-
-```json
-{
-"name": "lualatexmk",
-"command": "latexmk",
-"args": [
-    "-synctex=1",
-    "-interaction=nonstopmode",
-    "-file-line-error",
-    "-lualatex",
-    "-outdir=%OUTDIR%",
-    "%DOC%",
-    "-shell-escape"
-],
-"env": {}
-},
-```
 
 
 `"latex-workshop.latex.outDir": "output/",` to hide output files
