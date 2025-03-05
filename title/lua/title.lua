@@ -26,7 +26,7 @@ end
 
 
 local template = "&"..
-"\\underoverline[4cm]{\\vphantom{\\getWorkAuthor}}{\\phantom{P}} &"..
+"\\underoverline[4cm]{\\vphantom{\\getWorkAuthor}\\hspace{2.5cm}\\digdate\\today}{\\phantom{P}} &"..
 "\\underoverline[6cm]{%s}{\\phantom{P}} \\\\"
 
 define_latex_command("printSignName", function(authors)
