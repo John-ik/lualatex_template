@@ -1,3 +1,13 @@
+# Install
+## Linux
+Run [install script](utils/install.sh) now for APT and Pacman. Sudo will be requested for package manager.
+
+## Windows
+
+Installing guide:
+https://www.tug.org/texlive/windows.html
+
+
 # Setup
 ## VS Code settings.json
 
